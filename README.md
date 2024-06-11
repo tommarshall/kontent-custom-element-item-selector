@@ -20,7 +20,11 @@ Netlify has made this easy. If you click the deploy button below, it will guide 
 
 ## JSON Parameters
 
-You need to specify the `projectid` parameter in order to make the element work. The optional `filter` parameter is for filtering just subitems of your project and you can use any filtering described in our documentation (separated by &):
+You need to specify the `projectid` parameter in order to make the element work.
+
+You can specify the Delivery API Key with the optional `apiKey` parameter if your project environment has "Secure access for Delivery API" enabled.
+
+The optional `filter` parameter is for filtering just subitems of your project and you can use any filtering described in our documentation (separated by &):
 
 [Content filtering documentation](https://docs.kontent.ai/reference/delivery-api#tag/Filtering-content)
 
@@ -29,6 +33,7 @@ Within the filter you can also specify what language of your items you want to r
 ```Json
 {
     "projectid": "302946ce-a441-00e5-3dba-ec6ccc479168",
+    "apiKey": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9...",
     "filter": "system.type=article"
 }
 ```

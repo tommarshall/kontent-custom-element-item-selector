@@ -111,6 +111,7 @@
     </div>
     <script>
       var projectid = "";
+      var apiKey = "";
       var filter = "";
       var items = [];
       var selectedItems = [];
@@ -124,16 +125,23 @@
       }
 
       function setup(value) {
+        var headers = {};
         var urlfindItems =
           "https://deliver.kontent.ai/" +
           projectid +
           "/items?depth=0&elements=null";
+
+        if (apiKey) {
+          headers["Authorization"] = "Bearer " + apiKey;
+        }
+
         if (filter) {
           urlfindItems += "&" + filter;
         }
 
         $.ajax({
           url: urlfindItems,
+          headers: headers,
           dataType: "text",
           success: function(data) {
             data = JSON.parse(data);
@@ -276,6 +284,7 @@
               else {
                 configError = true;
               }
+              if (element.config.apiKey) apiKey = element.config.apiKey;
               if (element.config.filter) filter = element.config.filter;
             } else {
               configError = true;
